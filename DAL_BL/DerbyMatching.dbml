@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DerbyMatching" Class="DerbyMatchingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=DerbyMatching;Integrated Security=True" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Derbies" Member="Derbies">
+    <Type Name="Derby">
+      <Column Name="DerbyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DerbyName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DerbyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfEntries" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Derby_FightSequence" Member="FightSequences" ThisKey="DerbyID" OtherKey="DerbyID" Type="FightSequence" />
+      <Association Name="Derby_Entry" Member="Entries" ThisKey="DerbyID" OtherKey="DerbyID" Type="Entry" />
+      <Association Name="Location_Derby" Member="Location" ThisKey="LocationID" OtherKey="LocationID" Type="Location" IsForeignKey="true" />
+    </Type>
+    <UpdateFunction FunctionId="FunctionId1">
+      <Argument Parameter="derbyID" Member="DerbyID" />
+      <Argument Parameter="locationID" Member="LocationID" />
+      <Argument Parameter="derbyName" Member="DerbyName" />
+      <Argument Parameter="derbyDate" Member="DerbyDate" />
+      <Argument Parameter="numberOfEntries" Member="NumberOfEntries" />
+      <Argument Parameter="updatedBy" Member="UpdatedBy" />
+    </UpdateFunction>
+  </Table>
+  <Table Name="dbo.Locations" Member="Locations">
+    <Type Name="Location">
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LocationName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Location_Derby" Member="Derbies" ThisKey="LocationID" OtherKey="LocationID" Type="Derby" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roosters" Member="Roosters">
+    <Type Name="Rooster">
+      <Column Name="RoosterID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoosterLegBandNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="RoosterName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="true" />
+      <Column Name="RoosterWeight" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="EntryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Rooster_FightSequence" Member="FightSequences" ThisKey="RoosterID" OtherKey="Rooster1ID" Type="FightSequence" />
+      <Association Name="Rooster_FightSequence1" Member="FightSequences1" ThisKey="RoosterID" OtherKey="Rooster2ID" Type="FightSequence" />
+      <Association Name="Entry_Rooster" Member="Entry" ThisKey="EntryID" OtherKey="EntryID" Type="Entry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NoFights" Member="NoFights">
+    <Type Name="NoFight">
+      <Column Name="NoFightID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntryID1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EntryID2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Entry_NoFight" Member="Entry" ThisKey="EntryID1" OtherKey="EntryID" Type="Entry" IsForeignKey="true" />
+      <Association Name="Entry_NoFight1" Member="Entry1" ThisKey="EntryID2" OtherKey="EntryID" Type="Entry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FightSequences" Member="FightSequences">
+    <Type Name="FightSequence">
+      <Column Name="SequenceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DerbyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FightNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1EntryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1Entry" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1LB" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1Weight" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2EntryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2Entry" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2LB" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2Weight" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Derby_FightSequence" Member="Derby" ThisKey="DerbyID" OtherKey="DerbyID" Type="Derby" IsForeignKey="true" />
+      <Association Name="Rooster_FightSequence" Member="Rooster" ThisKey="Rooster1ID" OtherKey="RoosterID" Type="Rooster" IsForeignKey="true" />
+      <Association Name="Rooster_FightSequence1" Member="Rooster1" ThisKey="Rooster2ID" OtherKey="RoosterID" Type="Rooster" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HandPickedMatches" Member="HandPickedMatches">
+    <Type Name="HandPickedMatch">
+      <Column Name="MatchUpID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DerbyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1LB" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1EntryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1Entry" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1Weight" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2LB" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2EntryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2Entry" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Rooster2Weight" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Handlers" Member="Handlers">
+    <Type Name="Handler">
+      <Column Name="HandlerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HandlerName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Entries" Member="Entries">
+    <Type Name="Entry">
+      <Column Name="EntryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DerbyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HandlerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EntryName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Entry_Rooster" Member="Roosters" ThisKey="EntryID" OtherKey="EntryID" Type="Rooster" />
+      <Association Name="Entry_NoFight" Member="NoFights" ThisKey="EntryID" OtherKey="EntryID1" Type="NoFight" />
+      <Association Name="Entry_NoFight1" Member="NoFights1" ThisKey="EntryID" OtherKey="EntryID2" Type="NoFight" />
+      <Association Name="Derby_Entry" Member="Derby" ThisKey="DerbyID" OtherKey="DerbyID" Type="Derby" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Id="FunctionId1" Name="dbo.usp_UpdateDerbyInfo" Method="usp_UpdateDerbyInfo">
+    <Parameter Name="DerbyID" Parameter="derbyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationID" Parameter="locationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DerbyName" Parameter="derbyName" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="DerbyDate" Parameter="derbyDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="NumberOfEntries" Parameter="numberOfEntries" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UpdatedBy" Parameter="updatedBy" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_DeleteEntry" Method="usp_DeleteEntry">
+    <Parameter Name="EntryID" Parameter="entryID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ResetDerbyInfo" Method="usp_ResetDerbyInfo">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_CreateRoosterMatching" Method="usp_CreateRoosterMatching">
+    <ElementType Name="usp_CreateRoosterMatchingResult">
+      <Column Name="SequenceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DerbyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FightNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1EntryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1Entry" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1LB" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster1Weight" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2EntryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2Entry" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2LB" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Rooster2Weight" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

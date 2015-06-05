@@ -1,0 +1,17 @@
+﻿<Window x:Class="CockDerbyMatchingSystem.Windows.ReportViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        Title="ReportViewer" Height="730" Width="1024"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="#FFB3BABA">
+    <Grid>
+        <WindowsFormsHost Height="640" HorizontalAlignment="Left" 
+                          Name="windowsFormsHost1" VerticalAlignment="Top" 
+                          Width="1018" Margin="0,64,0,0">
+            <rv:ReportViewer x:Name="_reportViewer" />
+        </WindowsFormsHost>
+        <Button Name="btnEntryFights" Content="Fights per Entry" Height="23" HorizontalAlignment="Left" Margin="12,25,0,0" 
+                VerticalAlignment="Top" Width="111" Click="btnEntryFights_Click" />
+        <Button Content="Fight Schedule" Height="23" HorizontalAlignment="Left" Margin="129,25,0,0" Name="btnFightSchedule" VerticalAlignment="Top" Width="122" Click="btnFightSchedule_Click" />
+    </Grid>
+</Window>

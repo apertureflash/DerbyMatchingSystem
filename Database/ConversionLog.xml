@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type='text/xsl' href='_ConversionReport_Files/ConversionReport.xslt'?>
+<UpgradeLog>
+  <Properties>
+    <Property Name="Project" Value="DerbyMatching" />
+    <Property Name="Project File" Value="C:\Projects\Sagupaan\Cock Derby Matching System\Database\DerbyMatching.dbproj" />
+    <Property Name="Date" Value="Thursday, September 20, 2012" />
+    <Property Name="Time" Value="3:44 PM" />
+  </Properties>
+  <Event ErrorLevel="0" Project="C:\Projects\Sagupaan\Cock Derby Matching System\Database\DerbyMatching.dbproj" Source="..\DerbyMatching.dbproj" Description="The permissions file 'C:\Projects\Sagupaan\Cock Derby Matching System\Database\Properties\Database.sqlpermissions' was converted to Transact-SQL in the file 'C:\Projects\Sagupaan\Cock Derby Matching System\Database\Permissions.sql'." />
+  <Event ErrorLevel="0" Project="C:\Projects\Sagupaan\Cock Derby Matching System\Database\DerbyMatching.dbproj" Source="..\DerbyMatching.dbproj" Description="Project was successfully converted: 'C:\Projects\Sagupaan\Cock Derby Matching System\Database\DerbyMatching.dbproj' to 'C:\Projects\Sagupaan\Cock Derby Matching System\Database\DerbyMatching.sqlproj'" />
+  <Event ErrorLevel="3" Project="C:\Projects\Sagupaan\Cock Derby Matching System\Database\DerbyMatching.dbproj" Source="..\DerbyMatching.dbproj" Description="Converted" />
+</UpgradeLog>
