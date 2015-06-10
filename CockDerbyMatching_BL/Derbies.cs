@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using CockDerbyMatching_DAL;
 
 namespace CockDerbyMatching_BL
@@ -11,7 +10,7 @@ namespace CockDerbyMatching_BL
     {
         public Derby GetDerby()
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             dmDB.DeferredLoadingEnabled = false;
 
@@ -24,7 +23,7 @@ namespace CockDerbyMatching_BL
 
         public void ResetDerby()
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             dmDB.usp_ResetDerbyInfo();
         }
@@ -32,7 +31,7 @@ namespace CockDerbyMatching_BL
         public void UpdateDerbyInfo(Derby derbyInfo)
         {
 
-            using (DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext())
+            using (var dmDB = new DerbyMatchingDataContext())
             {
                 var derby = (from a in dmDB.Derbies
                              where a.DerbyID == derbyInfo.DerbyID
@@ -73,9 +72,9 @@ namespace CockDerbyMatching_BL
 
         public List<FightSequence> GenerateFightSequence()
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
-            List<FightSequence> myFightSequence = new List<FightSequence>();
+            var myFightSequence = new List<FightSequence>();
 
             myFightSequence = dmDB.usp_CreateRoosterMatching().ToList();
 
@@ -85,7 +84,7 @@ namespace CockDerbyMatching_BL
 
         public List<FightSequence> GetExistingFightSequence()
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             dmDB.DeferredLoadingEnabled = true;
 
@@ -106,17 +105,15 @@ namespace CockDerbyMatching_BL
 
         public ObservableCollection<HandPickedMatch> GetHandPickedMatches()
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             dmDB.DeferredLoadingEnabled = true;
 
-            ObservableCollection<HandPickedMatch> handPickedMatches = null;
-
             var results = (from hpm in dmDB.HandPickedMatches orderby hpm.Rooster1Weight select hpm);
 
-            if (results.Count() > 0)
+            if (results.Any())
             {
-                handPickedMatches = new ObservableCollection<HandPickedMatch>(results);
+                var handPickedMatches = new ObservableCollection<HandPickedMatch>(results);
                 return handPickedMatches;
             }
             else
@@ -128,7 +125,7 @@ namespace CockDerbyMatching_BL
 
         public void DeleteHandPickedMatch(Int32 matchUpID)
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             dmDB.HandPickedMatches.DeleteAllOnSubmit(dmDB.HandPickedMatches.Where(f => f.MatchUpID == matchUpID));
             dmDB.SubmitChanges();
@@ -136,7 +133,7 @@ namespace CockDerbyMatching_BL
 
         public void AddHandPickedMatch(HandPickedMatch handPickedMatch)
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             dmDB.HandPickedMatches.InsertOnSubmit(handPickedMatch);
             dmDB.SubmitChanges();

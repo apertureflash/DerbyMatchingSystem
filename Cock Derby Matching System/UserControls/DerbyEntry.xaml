@@ -10,7 +10,7 @@
              Height="401" Width="406">
 
     <UserControl.Resources>
-        
+
         <!-- the orders datasource -->
         <ObjectDataProvider x:Key="EntryRoostersDataProvider" ObjectType="{x:Type local:EntryRoostersDataProvider}"/>
         <ObjectDataProvider x:Key="EntryRoosters" ObjectInstance="{StaticResource EntryRoostersDataProvider}" 
@@ -21,7 +21,7 @@
 
         </ObjectDataProvider>
     </UserControl.Resources>
-    
+
     <Grid>
         <Rectangle Fill="#FFA7CEE5" Stroke="#FF000000" RadiusX="10" RadiusY="10"
         	 RenderTransformOrigin="0.139,0.012" StrokeThickness="1" Grid.RowSpan="2">
@@ -77,8 +77,8 @@
                   CanUserAddRows="False"
                   CanUserDeleteRows="True"
                   >
-                  <!--ItemsSource="{Binding Source={StaticResource EntryRoosters}}"-->
-                  <!--MouseDoubleClick="dgRoosters_MouseDoubleClick"-->
+            <!--ItemsSource="{Binding Source={StaticResource EntryRoosters}}"-->
+            <!--MouseDoubleClick="dgRoosters_MouseDoubleClick"-->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Leg Band Number" 
                                     Width="150"
@@ -92,21 +92,21 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
-        <Label Content="Leg Band Number" Height="28" HorizontalAlignment="Left" Margin="12,287,0,0" Name="label4" VerticalAlignment="Top" Width="101" />
+
+        <Label Content="Leg Band Number" Height="29" HorizontalAlignment="Left" Margin="12,287,0,0" Name="label4" VerticalAlignment="Top" Width="110" />
         <TextBox Name="txtLBNumber" Height="23" HorizontalAlignment="Left" IsEnabled="True" 
-                 Margin="119,287,0,0" VerticalAlignment="Top" Width="73" 
+                 Margin="122,287,0,0" VerticalAlignment="Top" Width="73" 
                  />
-                <!--Text ="{Binding ElementName=dgRoosters, Path=SelectedItem.RoosterLegBandNumber}"-->
-                <!--"{Binding RoosterLegBandNumber}"-->
-        
-        <Label Content="Weight" Height="28" Margin="12,321,0,0" Name="label5" 
-               VerticalAlignment="Top" HorizontalAlignment="Left" Width="98" />
+        <!--Text ="{Binding ElementName=dgRoosters, Path=SelectedItem.RoosterLegBandNumber}"-->
+        <!--"{Binding RoosterLegBandNumber}"-->
+
+        <Label Content="Weight" Height="28" Margin="63,321,0,0" Name="label5" 
+               VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" />
         <TextBox Name="txtWeight" Height="23" HorizontalAlignment="Left" 
-                 Margin="119,321,0,0" VerticalAlignment="Top" Width="73" 
+                 Margin="122,321,0,0" VerticalAlignment="Top" Width="73" 
                  />
-                 <!--Text ="{Binding ElementName=dgRoosters, Path=SelectedItem.RoosterWeight}"-->
-                 <!--Text="{Binding Path=RoosterWeight}"-->
+        <!--Text ="{Binding ElementName=dgRoosters, Path=SelectedItem.RoosterWeight}"-->
+        <!--Text="{Binding Path=RoosterWeight}"-->
 
         <Button Name="btnSave" Content="Save Entry" Height="23" HorizontalAlignment="Right" 
                 Margin="0,354,13,0" VerticalAlignment="Top" Width="114" Click="btnSave_Click" />

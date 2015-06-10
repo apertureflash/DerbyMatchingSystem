@@ -17,9 +17,13 @@
         </ObjectDataProvider>
 
     </UserControl.Resources>
-    
-    
+
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Rectangle Fill="#FFA7CEE5" Stroke="#FF000000" RadiusX="10" RadiusY="10"
         	 RenderTransformOrigin="0.139,0.012" StrokeThickness="1" Grid.RowSpan="2">
             <Rectangle.BitmapEffect>
@@ -29,7 +33,7 @@
 
         <!-- fight schedule -->
         <DataGrid Name="dgFightSchedule" AutoGenerateColumns="False" Height="452" Width="556" 
-                  HorizontalAlignment="Center" Margin="12,12,12,0" 
+                  HorizontalAlignment="Center" Margin="12,3,12,0" 
                   VerticalAlignment="Top" 
                   VerticalScrollBarVisibility="Auto" 
                   HorizontalScrollBarVisibility="Visible"
@@ -37,7 +41,7 @@
                   CanUserResizeColumns="True"
                   CanUserSortColumns="False"
                   CanUserAddRows="False"
-                  CanUserDeleteRows="True">
+                  CanUserDeleteRows="True" Grid.Row="1">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="FT. #" 
@@ -90,46 +94,46 @@
                                     Binding="{Binding Rooster2Weight, StringFormat=\{0:F0\}}">
                 </DataGridTextColumn>
             </DataGrid.Columns>
-            
+
         </DataGrid>
 
         <Button Name="btnHandPicked" Content="Hand Picked Fights" Height="23" 
-                HorizontalAlignment="Left" Margin="12,470,0,0" VerticalAlignment="Top" 
-                Width="114" Click="btnHandPicked_Click" />
+                HorizontalAlignment="Left" Margin="12,461,0,0" VerticalAlignment="Top" 
+                Width="114" Click="btnHandPicked_Click" Grid.Row="1" />
 
         <Button Name="btnFightSequence" Content="Generate Fight Sequence" 
-                Height="23" HorizontalAlignment="Left" Margin="132,470,0,0" 
-                VerticalAlignment="Top" Width="140" Click="btnFightSequence_Click" />
+                Height="23" HorizontalAlignment="Left" Margin="132,461,0,0" 
+                VerticalAlignment="Top" Width="140" Click="btnFightSequence_Click" Grid.Row="1" />
 
         <Button Name="btnPrintSequence" Content="Print Fight Matches" Height="23" HorizontalAlignment="Left" 
-                Margin="278,470,0,0" VerticalAlignment="Top" Width="129" Click="btnPrintSequence_Click" />
+                Margin="278,461,0,0" VerticalAlignment="Top" Width="129" Click="btnPrintSequence_Click" Grid.Row="1" />
 
-        <Label Content="Un-Matched Entries" Height="28" HorizontalAlignment="Left" Margin="8,511,0,0" Name="label1" VerticalAlignment="Top" Width="178" FontWeight="Bold" Foreground="Red" />
-        
+        <Label Content="Un-Matched Entries" Height="28" HorizontalAlignment="Left" Margin="8,502,0,0" Name="label1" VerticalAlignment="Top" Width="178" FontWeight="Bold" Foreground="Red" Grid.Row="1" />
+
         <!-- Unmatched entries -->
         <DataGrid Name="dgUnMatched" AutoGenerateColumns="False" Height="133" HorizontalAlignment="Left" 
-                  Margin="12,534,0,0" VerticalAlignment="Top" Width="556">
+                  Margin="12,530,0,0" VerticalAlignment="Top" Width="556" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Entry #" 
                                     Width="54"
                                     IsReadOnly="True"
                                     Binding="{Binding EntryNumber}">
                 </DataGridTextColumn>
-                
+
                 <DataGridTextColumn Header="Entry Name" 
-                                    Width="150"
+                                    Width="280"
                                     IsReadOnly="True"
                                     Binding="{Binding EntryName}">
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="LB" 
-                                    Width="40"
+                <DataGridTextColumn Header="Leg Band Number" 
+                                    Width="110"
                                     IsReadOnly="True"
                                     Binding="{Binding RoosterLegBandNumber}">
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="WT." 
-                                    Width="47"
+                <DataGridTextColumn Header="Rooster Weight" 
+                                    Width="100"
                                     IsReadOnly="True"
                                     Binding="{Binding RoosterWeight, StringFormat=\{0:F0\}}">
                 </DataGridTextColumn>

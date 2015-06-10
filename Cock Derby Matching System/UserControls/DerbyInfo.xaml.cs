@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-    using CockDerbyMatching_BL;
+using CockDerbyMatching_BL;
     using CockDerbyMatching_DAL;
 
 namespace CockDerbyMatchingSystem.UserControls
@@ -42,14 +31,10 @@ namespace CockDerbyMatchingSystem.UserControls
         {
             try
             {
-                Derbies derbiesDA = new Derbies();
+                var derbiesDA = new Derbies();
 
-                _derby = derbiesDA.GetDerby();
+                _derby = derbiesDA.GetDerby() ?? new Derby();
 
-                if (_derby == null)
-                {
-                    _derby = new Derby();
-                }
                 this.DataContext = _derby;
             }
             catch (Exception ex)
@@ -60,20 +45,23 @@ namespace CockDerbyMatchingSystem.UserControls
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+           
             try
             {
-                Derbies derbiesBL = new Derbies();
+                var derbiesBL = new Derbies();
 
                 derbiesBL.UpdateDerbyInfo(_derby);
-
-                //EnableFields(false);
+                
+                ////EnableFields(false);
                 this.btnEdit.Content = "Edit";
                 _inEditMode = false;
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            
             
         }
 
@@ -111,7 +99,7 @@ namespace CockDerbyMatchingSystem.UserControls
                 if (MessageBox.Show("This will reset all derby information and will close the application.\n\nWould you like to continue?",
                     "Reset Derby Info", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Derbies derbiesDA = new Derbies();
+                    var derbiesDA = new Derbies();
 
                     derbiesDA.ResetDerby();
                 }

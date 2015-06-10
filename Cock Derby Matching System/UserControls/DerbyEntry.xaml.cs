@@ -161,7 +161,7 @@ namespace CockDerbyMatchingSystem.UserControls
                 _currentRooster = (Rooster)grid.SelectedValue;
             }
 
-            this.txtLBNumber.Text = _currentRooster.RoosterLegBandNumber.ToString();
+            this.txtLBNumber.Text = _currentRooster.RoosterLegBandNumber;
             this.txtWeight.Text = _currentRooster.RoosterWeight.ToString();
 
             //set to edit mode
@@ -175,16 +175,18 @@ namespace CockDerbyMatchingSystem.UserControls
                 #region Add Mode
                 try
                 {
-                    _currentRooster = new Rooster();
-                    _currentRooster.EntryID = _currentEntry.EntryID;
-                    _currentRooster.RoosterLegBandNumber = this.txtLBNumber.Text;
-                    _currentRooster.RoosterWeight = Decimal.Parse(this.txtWeight.Text);
-                    _currentRooster.CreatedBy = "Administrator";
-                    _currentRooster.RoosterName = _currentEntry.EntryName;
+                    _currentRooster = new Rooster
+                    {
+                        EntryID = _currentEntry.EntryID,
+                        RoosterLegBandNumber = txtLBNumber.Text,
+                        RoosterWeight = Decimal.Parse(txtWeight.Text),
+                        CreatedBy = "Administrator",
+                        RoosterName = _currentEntry.EntryName
+                    };
 
                     _entryRoosters.Add(_currentRooster);
                     
-                    NewRooster();
+                   // NewRooster();
                 }
                 catch (Exception ex)
                 {
@@ -219,8 +221,8 @@ namespace CockDerbyMatchingSystem.UserControls
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Roosters currentRoosters = new Roosters();
-            Entries currentEntry = new Entries();
+            var currentRoosters = new Roosters();
+            var currentEntry = new Entries();
 
             try
             {
@@ -273,20 +275,20 @@ namespace CockDerbyMatchingSystem.UserControls
         {
             _currentEntry = new Entry();
 
-            MaxEntryNumber newEntryNumber = new MaxEntryNumber();
+            var newEntryNumber = new MaxEntryNumber();
 
             _currentEntry.EntryNumber = newEntryNumber.NewEntryNumber; //newEntryNumber[0].NewEntryNumber;
 
             _editMode = false;
 
-            this.DataContext = _currentEntry;
+            DataContext = _currentEntry;
 
-            this.txtLBNumber.Text = NewLegBandNumber();
+            txtLBNumber.Text = NewLegBandNumber();
         }
 
         private String NewLegBandNumber()
         {
-            MaxGameFowlNumber newGameFowlNumber = new MaxGameFowlNumber();
+            var newGameFowlNumber = new MaxGameFowlNumber();
 
             return _currentRooster.RoosterLegBandNumber = newGameFowlNumber.NewLegBandNumber;
         }

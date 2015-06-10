@@ -39,11 +39,11 @@ namespace CockDerbyMatchingSystem.UserControls
         private void dgDerbyEntries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Entry dbEntry;
-            DataGrid grid = sender as DataGrid;
+            var grid = sender as DataGrid;
 
             // pass the customer ID to our Orders datasource via the ObjectDataProvider
-            ObjectDataProvider entryRoosters = this.FindResource("EntryRoosters") as ObjectDataProvider;
-            ObjectDataProvider entryNoFight = this.FindResource("NoFightEntries") as ObjectDataProvider;
+            var entryRoosters = this.FindResource("EntryRoosters") as ObjectDataProvider;
+            var entryNoFight = this.FindResource("NoFightEntries") as ObjectDataProvider;
 
             if (grid.SelectedIndex >= 0)
             {
@@ -80,11 +80,11 @@ namespace CockDerbyMatchingSystem.UserControls
             if (dgDerbyEntries.SelectedIndex >= 0)
             {
 
-                DerbyEntry editEntry = new DerbyEntry();
+                var editEntry = new DerbyEntry();
 
                 editEntry.EntryID = _currentEntry.EntryID;
 
-                Window window = new Window
+                var window = new Window
                 {
                     Width = 440,
                     Height = 480,
@@ -110,11 +110,11 @@ namespace CockDerbyMatchingSystem.UserControls
         {
             var bc = new BrushConverter();
 
-            DerbyEntry editEntry = new DerbyEntry();
+            var editEntry = new DerbyEntry();
 
             editEntry.EntryID = 0;
 
-            Window window = new Window
+            var window = new Window
             {
                 Width = 440,
                 Height = 480,
@@ -140,7 +140,7 @@ namespace CockDerbyMatchingSystem.UserControls
             Entry dbEntry;
 
             // pass the customer ID to our Orders datasource via the ObjectDataProvider
-            ObjectDataProvider entryRoosters = this.FindResource("EntryRoosters") as ObjectDataProvider;
+            var entryRoosters = this.FindResource("EntryRoosters") as ObjectDataProvider;
 
             //.SelectedValue.GetType().ToString() == "CockDerbyMatching_DAL.Entry"
             if (this.dgDerbyEntries.SelectedIndex >= 0)
@@ -156,7 +156,7 @@ namespace CockDerbyMatchingSystem.UserControls
 
         private void LoadEntries()
         {
-            Entries derbyEntries = new Entries();
+            var derbyEntries = new Entries();
 
             _entries = derbyEntries.GetDerbyEntries(1);
 
@@ -168,7 +168,7 @@ namespace CockDerbyMatchingSystem.UserControls
         {
             Entry dbEntry;
 
-            ObjectDataProvider entryNoFight = this.FindResource("NoFightEntries") as ObjectDataProvider;
+            var entryNoFight = this.FindResource("NoFightEntries") as ObjectDataProvider;
 
             if (this.dgDerbyEntries.SelectedIndex >= 0)
             {
@@ -187,7 +187,7 @@ namespace CockDerbyMatchingSystem.UserControls
             {
                 if (MessageBox.Show("Delete this Derby Entry?", "Delete Derby Entry", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Entries ent = new Entries();
+                    var ent = new Entries();
 
                     ent.DeleteEntry(_currentEntry.EntryID);
 
@@ -209,11 +209,9 @@ namespace CockDerbyMatchingSystem.UserControls
         {
             var bc = new BrushConverter();
 
-            EntryNoFights entryNF = new EntryNoFights();
+            var entryNF = new EntryNoFights {EntryID = _currentEntry.EntryID};
 
-            entryNF.EntryID = _currentEntry.EntryID;
-
-            Window window = new Window
+            var window = new Window
             {
                 Width = 750,
                 Height = 430,

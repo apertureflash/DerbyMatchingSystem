@@ -27,7 +27,7 @@
             <ComboBox Height="23" HorizontalAlignment="Left" Margin="178,125,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" />
             -->
 
-            <Label Content="Number of Entries" Height="28" HorizontalAlignment="Left" Margin="194,50,0,0" Name="lblEntriesNo" VerticalAlignment="Top" Width="100" FlowDirection="RightToLeft" />
+            <Label Content="Number of Entries" Height="28" HorizontalAlignment="Left" Margin="188,50,0,0" Name="lblEntriesNo" VerticalAlignment="Top" Width="106" FlowDirection="RightToLeft" />
             <TextBox Height="23" HorizontalAlignment="Left" Margin="293,50,0,0" Name="txtEntriesNo" 
                      VerticalAlignment="Top" Width="85" Text="{Binding NumberOfEntries, Mode=TwoWay}" IsEnabled="True"/>
             <Button Content="Save" Height="23" HorizontalAlignment="Left" Margin="69,0,0,18" Name="btnEdit" VerticalAlignment="Bottom" Width="75" Click="btnEdit_Click" />

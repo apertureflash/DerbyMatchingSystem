@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="453" d:DesignWidth="639"
              Height="529" Width="400" BorderBrush="White">
-    
+
     <UserControl.Resources>
         <!-- the customers datasource -->
         <ObjectDataProvider x:Key="DerbyEntryDataProvider" ObjectType="{x:Type local:DerbyEntriesDataProvider}"/>
@@ -16,7 +16,7 @@
                             MethodName="GetDerbyEntries">
             <ObjectDataProvider.MethodParameters>
                 <system:Int32>1</system:Int32>
-            </ObjectDataProvider.MethodParameters>            
+            </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
 
         <ObjectDataProvider x:Key="NoFightEntries" ObjectInstance="{StaticResource DerbyEntryDataProvider}" 
@@ -25,19 +25,19 @@
                 <system:Int32>0</system:Int32>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-        
+
         <!-- the orders datasource -->
         <ObjectDataProvider x:Key="EntryRoostersDataProvider" ObjectType="{x:Type local:EntryRoostersDataProvider}"/>
         <ObjectDataProvider x:Key="EntryRoosters" ObjectInstance="{StaticResource EntryRoostersDataProvider}" 
-                            MethodName="GetRoostersByDerbyEntry">            
+                            MethodName="GetRoostersByDerbyEntry">
             <ObjectDataProvider.MethodParameters>
                 <system:Int32>0</system:Int32>
             </ObjectDataProvider.MethodParameters>
-             
+
         </ObjectDataProvider>
 
     </UserControl.Resources>
-    
+
     <Grid>
         <Rectangle Fill="#FFA7CEE5" Stroke="#FF000000" RadiusX="10" RadiusY="10"
         	 RenderTransformOrigin="0.139,0.012" StrokeThickness="1" Grid.RowSpan="2">
@@ -45,22 +45,22 @@
                 <DropShadowBitmapEffect Opacity="0.8"/>
             </Rectangle.BitmapEffect>
         </Rectangle>
-        
+
         <!-- Derby Entries -->
         <DataGrid Name="dgDerbyEntries" AutoGenerateColumns="False" Height="242" 
-                  HorizontalAlignment="Center" Margin="0,12,0,0" 
+                  HorizontalAlignment="Center" Margin="10,12,10,0" 
                   VerticalAlignment="Top" Width="380"
                   SelectionChanged="dgDerbyEntries_SelectionChanged" HorizontalScrollBarVisibility="Auto"
                   CanUserAddRows="False" CanUserSortColumns="False">
-                  <!--ItemsSource="{Binding Source={StaticResource DerbyEntries}}"-->
+            <!--ItemsSource="{Binding Source={StaticResource DerbyEntries}}"-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Entry #" 
-                                    Width="55"
+                <DataGridTextColumn Header="Entry Number" 
+                                    Width="83"
                                     IsReadOnly="True"
                                     Binding="{Binding EntryNumber}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Entry Name" 
-                                    Width="Auto"
+                                    Width="293"
                                     IsReadOnly="True"
                                     Binding="{Binding EntryName}">
                 </DataGridTextColumn>
@@ -80,7 +80,7 @@
                                     Binding="{Binding RoosterLegBandNumber}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Weight" 
-                                    Width="150"
+                                    Width="223"
                                     IsReadOnly="True"
                                     Binding="{Binding RoosterWeight, StringFormat=\{0:F0\}}">
                 </DataGridTextColumn>
@@ -89,7 +89,7 @@
 
         <!-- No-fight matches -->
         <Label Content="No-Fight Entries" Height="28" HorizontalAlignment="Left" Margin="12,376,0,0" Name="label3" VerticalAlignment="Top" Width="111" Foreground="Red" FontWeight="Bold" />
-        
+
         <DataGrid Name="dgNoFight" AutoGenerateColumns="False" Height="90" 
                   HorizontalAlignment="Left" Margin="10,397,0,0" 
                   VerticalAlignment="Top" Width="378"
