@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+using System.Windows.Forms.VisualStyles;
 using CockDerbyMatching_BL;
 using CockDerbyMatching_DAL;
 
@@ -43,17 +34,24 @@ namespace CockDerbyMatchingSystem.UserControls
         {
             set
             {
+
                 //existing entry
                 if (value > 0)
                 {
                     _entryID = value;
 
-                    Entries ent = new Entries();
+                    var ent = new Entries();
 
                     _currentEntry = ent.GetEntry(_entryID);
-
+                    
                     _editMode = true;
                 }
+                ////var maxEntryNumber = new MaxEntryNumber();
+
+                ////if (_currentEntry.EntryID > maxEntryNumber.NewEntryNumber) //Validator for Number of Entries
+                ////{
+                ////    MessageBox.Show("Max Number of Entries Based from Derby Info Reached");
+                ////}
 
                 //new entry
                 else
@@ -125,7 +123,7 @@ namespace CockDerbyMatchingSystem.UserControls
         
         private void LoadRoosters()
         {
-            Roosters entryRoosters = new Roosters();
+            var entryRoosters = new Roosters();
 
             _entryRoosters = entryRoosters.GetEntryRoosters(_currentEntry.EntryID);
 
@@ -154,7 +152,7 @@ namespace CockDerbyMatchingSystem.UserControls
 
         private void dgRoosters_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataGrid grid = sender as DataGrid;
+            var grid = sender as DataGrid;
 
             if (grid.SelectedIndex >= 0)
             {
@@ -260,7 +258,7 @@ namespace CockDerbyMatchingSystem.UserControls
                         }
                     }
 
-                    Window myParent = (Window)this.Parent;
+                    var myParent = (Window)this.Parent;
                     myParent.Close();
                 }
 
@@ -284,6 +282,15 @@ namespace CockDerbyMatchingSystem.UserControls
             DataContext = _currentEntry;
 
             txtLBNumber.Text = NewLegBandNumber();
+
+
+            //var maxEntryNumber = new Derby();
+
+            //if (_currentEntry.EntryID > maxEntryNumber.NumberOfEntries)
+            //{
+            //    MessageBox.Show("Max Number of Entries Based from Derby Info Reached");
+            //}
+
         }
 
         private String NewLegBandNumber()

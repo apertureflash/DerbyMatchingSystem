@@ -55,7 +55,7 @@
             <!--ItemsSource="{Binding Source={StaticResource DerbyEntries}}"-->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Entry Number" 
-                                    Width="83"
+                                    Width="115"
                                     IsReadOnly="True"
                                     Binding="{Binding EntryNumber}">
                 </DataGridTextColumn>
@@ -80,7 +80,7 @@
                                     Binding="{Binding RoosterLegBandNumber}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Weight" 
-                                    Width="223"
+                                    Width="229"
                                     IsReadOnly="True"
                                     Binding="{Binding RoosterWeight, StringFormat=\{0:F0\}}">
                 </DataGridTextColumn>
@@ -96,7 +96,7 @@
                   ItemsSource="{Binding Source={StaticResource NoFightEntries}}" CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Entry Number" 
-                                    Width="90"
+                                    Width="115"
                                     IsReadOnly="True"
                                     Binding="{Binding EntryNumber}">
                 </DataGridTextColumn>

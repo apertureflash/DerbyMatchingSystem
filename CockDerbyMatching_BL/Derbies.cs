@@ -57,6 +57,10 @@ namespace CockDerbyMatching_BL
             }
         }
 
+       
+
+
+
         /*
         public List<FightSequence> GenerateFightSequence()
         {

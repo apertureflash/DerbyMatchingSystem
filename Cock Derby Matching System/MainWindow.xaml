@@ -1,10 +1,15 @@
-﻿<Window x:Class="CockDerbyMatchingSystem.MainWindow"
+﻿<my:MetroWindow x:Class="CockDerbyMatchingSystem.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="730" Width="1024" 
-        xmlns:my="clr-namespace:CockDerbyMatchingSystem.UserControls" 
+        xmlns:my="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:userControls="clr-namespace:CockDerbyMatchingSystem.UserControls"
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="#FFB3BABA">
     <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="490*"/>
+        </Grid.ColumnDefinitions>
         <!--
             <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top">
                 <MenuItem  Header="Derby Info"></MenuItem>
@@ -12,8 +17,8 @@
                 <MenuItem  Header="Reports"></MenuItem>
             </Menu>
         -->
-        <my:FightSchedule Height="679" HorizontalAlignment="Left" Margin="422,12,0,0" x:Name="fightSchedule1" VerticalAlignment="Top" Width="580" />
-        <my:DerbyInfo Height="136" HorizontalAlignment="Left" Margin="12,12,0,0" x:Name="derbyInfo1" VerticalAlignment="Top" Width="400" />
-        <my:DerbyEntries Height="529" HorizontalAlignment="Left" Margin="12,162,0,0" x:Name="derbyEntries1" VerticalAlignment="Top" Width="400" />
+        <userControls:FightSchedule Height="679" HorizontalAlignment="Left" Margin="384,12,0,0" x:Name="fightSchedule1" VerticalAlignment="Top" Width="580" Grid.Column="1" />
+        <userControls:DerbyInfo Height="136" HorizontalAlignment="Left" Margin="12,12,0,0" x:Name="derbyInfo1" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" />
+        <userControls:DerbyEntries Height="529" HorizontalAlignment="Left" Margin="12,162,0,0" x:Name="derbyEntries1" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" />
     </Grid>
-</Window>
+</my:MetroWindow>

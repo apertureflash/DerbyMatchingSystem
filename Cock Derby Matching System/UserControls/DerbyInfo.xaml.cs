@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using CockDerbyMatching_BL;
     using CockDerbyMatching_DAL;
+using MetroFramework.Forms;
 
 namespace CockDerbyMatchingSystem.UserControls
 {
@@ -15,7 +16,7 @@ namespace CockDerbyMatchingSystem.UserControls
         #region Properties, Events, Fields
 
         private Derby _derby;
-        private Boolean _inEditMode = false;
+        private Boolean _inEditMode;
         private Int32 _derbyID = 0;
 
         #endregion
@@ -43,7 +44,7 @@ namespace CockDerbyMatchingSystem.UserControls
             }
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
            
             try
@@ -51,11 +52,10 @@ namespace CockDerbyMatchingSystem.UserControls
                 var derbiesBL = new Derbies();
 
                 derbiesBL.UpdateDerbyInfo(_derby);
-                
-                ////EnableFields(false);
-                this.btnEdit.Content = "Edit";
-                _inEditMode = false;
-
+                EnableFields(false);
+                //btnEdit.Content = "Edit";
+                //_inEditMode = false;
+               
             }
             catch (Exception ex)
             {
@@ -65,13 +65,30 @@ namespace CockDerbyMatchingSystem.UserControls
             
         }
 
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var derbiesBL = new Derbies();
+
+                derbiesBL.UpdateDerbyInfo(_derby);
+                EnableFields(true);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+
         private void EnableFields(Boolean enable)
         {
-            this.txtDerbyName.IsEnabled = enable;
-            this.dtpDerbyDate.IsEnabled = enable;
-            this.txtEntriesNo.IsEnabled = enable;
+            txtDerbyName.IsEnabled = enable;
+            dtpDerbyDate.IsEnabled = enable;
+            txtEntriesNo.IsEnabled = enable;
 
-            this.btnCancel.IsEnabled = enable;
+            btnCancel.IsEnabled = enable;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

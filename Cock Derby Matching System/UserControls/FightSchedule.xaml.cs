@@ -91,5 +91,10 @@ namespace CockDerbyMatchingSystem.UserControls
 
             rptViewer.Show();
         }
+
+        private void dgFightSchedule_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

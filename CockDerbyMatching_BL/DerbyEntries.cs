@@ -15,7 +15,7 @@ namespace CockDerbyMatching_BL
 
         public ObservableCollection<Entry> GetDerbyEntries(Int32 derbyID)
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             //dmDB.DeferredLoadingEnabled = false;
 
@@ -39,7 +39,7 @@ namespace CockDerbyMatching_BL
 
         public ObservableCollection<Entry> GetNoFightEntries(Int32 entryID)
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             ObservableCollection<Entry> entryNoFights = null;
 
@@ -62,7 +62,7 @@ namespace CockDerbyMatching_BL
         public ObservableCollection<Entry> GetAvailableFights(Int32 entryID)
         {
 
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             ObservableCollection<Entry> myEntries = null;
 
@@ -91,11 +91,10 @@ namespace CockDerbyMatching_BL
 
         public Entry GetEntry(Int32 entryID)
         {
-            Entry var;
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
 
-            var = (from ent in dmDB.Entries where ent.EntryID == entryID select ent).FirstOrDefault();
+            Entry var = (from ent in dmDB.Entries where ent.EntryID == entryID select ent).FirstOrDefault();
 
             return var;
         }
@@ -103,7 +102,7 @@ namespace CockDerbyMatching_BL
         public void UpdateEntryInfo(Entry currentEntry)
         {
 
-            using (DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext())
+            using (var dmDB = new DerbyMatchingDataContext())
             {
                 var entry = (from a in dmDB.Entries
                              where a.EntryID == currentEntry.EntryID
@@ -128,7 +127,7 @@ namespace CockDerbyMatching_BL
 
         public Int32 AddDerbyEntry(Entry newEntry)
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             newEntry.DateCreated = DateTime.Now;
             dmDB.Entries.InsertOnSubmit(newEntry);
@@ -139,7 +138,7 @@ namespace CockDerbyMatching_BL
 
         public void DeleteEntry(Int32 entryID)
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             dmDB.usp_DeleteEntry(entryID);
 
@@ -147,21 +146,23 @@ namespace CockDerbyMatching_BL
 
         public void SetNoFightEntries(ObservableCollection<Entry> noFightEntries, Int32 entryID)
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             //dmDB.Connection.BeginTransaction();
 
             dmDB.NoFights.DeleteAllOnSubmit(dmDB.NoFights.Where(f => f.EntryID1 == entryID));
             dmDB.NoFights.DeleteAllOnSubmit(dmDB.NoFights.Where(f => f.EntryID2 == entryID));
 
-            foreach (Entry ent in noFightEntries)
+            foreach (var ent in noFightEntries)
             {
-                NoFight nfEntry = new NoFight();
+                var nfEntry = new NoFight
+                {
+                    EntryID1 = entryID,
+                    EntryID2 = ent.EntryID,
+                    CreatedBy = "Administrator",
+                    DateCreated = DateTime.Now
+                };
 
-                nfEntry.EntryID1 = entryID;
-                nfEntry.EntryID2 = ent.EntryID;
-                nfEntry.CreatedBy = "Administrator";
-                nfEntry.DateCreated = DateTime.Now;
                 dmDB.NoFights.InsertOnSubmit(nfEntry);
             }
 
@@ -173,7 +174,7 @@ namespace CockDerbyMatching_BL
 
     public class MaxNumber
     {
-        private Int32 _Column1;
+        private readonly Int32 _Column1;
 
         public MaxNumber(Int32 AColumn1)
         {
@@ -189,11 +190,11 @@ namespace CockDerbyMatching_BL
 
     public class MaxEntryNumber
     {
-        private Int32 _maxNumber;
+        private readonly Int32 _maxNumber;
 
         public MaxEntryNumber()
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
             var query =
                 from entries in
                     (from entries in dmDB.Entries
@@ -241,7 +242,7 @@ namespace CockDerbyMatching_BL
 
         public MaxGameFowlNumber()
         {
-            DerbyMatchingDataContext dmDB = new DerbyMatchingDataContext();
+            var dmDB = new DerbyMatchingDataContext();
 
             
             // get id of last record
