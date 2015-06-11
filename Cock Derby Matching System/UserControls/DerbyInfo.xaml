@@ -30,11 +30,11 @@
             <Label Content="Number of Entries" Height="28" HorizontalAlignment="Left" Margin="188,50,0,0" Name="lblEntriesNo" VerticalAlignment="Top" Width="106" FlowDirection="RightToLeft" />
             <TextBox Height="23" HorizontalAlignment="Left" Margin="293,50,0,0" Name="txtEntriesNo" 
                      VerticalAlignment="Top" Width="85" Text="{Binding NumberOfEntries, Mode=TwoWay}" IsEnabled="True"/>
-            <Button Content="Save" Height="23" HorizontalAlignment="Left" Margin="10,0,0,18" Name="btnSave" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click" />
-            <Button Content="Cancel" Height="27" HorizontalAlignment="Left" Margin="205,93,0,0" Name="btnCancel" VerticalAlignment="Top" Width="75" Click="btnCancel_Click" IsEnabled="True" RenderTransformOrigin="1.427,0.652" />
-            <Button Content="Reset Derby" Height="27" HorizontalAlignment="Left" Margin="303,93,0,0" Name="btnResetDerby" VerticalAlignment="Top" Width="75" Click="btnResetDerby_Click" />
+            <Button Content="Save" Height="23" HorizontalAlignment="Left" Margin="20,0,0,20" Name="btnSave" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click" />
+            <Button Content="Cancel" Height="27" HorizontalAlignment="Left" Margin="178,89,0,0" Name="btnCancel" VerticalAlignment="Top" Width="75" Click="btnCancel_Click" IsEnabled="True" RenderTransformOrigin="1.427,0.652" />
+            <Button Content="Reset Derby" Height="27" HorizontalAlignment="Left" Margin="258,89,0,0" Name="btnResetDerby" VerticalAlignment="Top" Width="75" Click="btnResetDerby_Click" />
         </Grid>
-        <Button Content="Edit" Height="23" HorizontalAlignment="Left" Margin="105,0,0,18" x:Name="btnEdit" VerticalAlignment="Bottom" Width="75" Click="btnEdit_Click" />
+        <Button Content="Edit" Height="25" HorizontalAlignment="Left" Margin="99,0,0,20" x:Name="btnEdit" VerticalAlignment="Bottom" Width="75" Click="btnEdit_Click" />
         <!--
 
         <DataGrid AutoGenerateColumns="False" Height="157" HorizontalAlignment="Left" Margin="12,12,0,0" Name="dataGrid1" VerticalAlignment="Top" Width="382" CanUserDeleteRows="True" Background="{x:Null}" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False">

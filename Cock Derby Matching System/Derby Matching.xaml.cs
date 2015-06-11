@@ -23,5 +23,10 @@ namespace CockDerbyMatchingSystem
         {
             InitializeComponent();
         }
+
+        private void fightSchedule1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -25,15 +25,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Rectangle Fill="#FFA7CEE5" Stroke="#FF000000" RadiusX="10" RadiusY="10"
-        	 RenderTransformOrigin="0.139,0.012" StrokeThickness="1" Grid.RowSpan="2">
+        	 RenderTransformOrigin="0.139,0.012" StrokeThickness="1" Grid.RowSpan="2" Margin="0,6,-147,4">
             <Rectangle.BitmapEffect>
                 <DropShadowBitmapEffect Opacity="0.8"/>
             </Rectangle.BitmapEffect>
         </Rectangle>
 
         <!-- fight schedule -->
-        <DataGrid Name="dgFightSchedule" AutoGenerateColumns="False" Height="452" Width="556" 
-                  HorizontalAlignment="Center" Margin="12,3,12,0" 
+        <DataGrid Name="dgFightSchedule" AutoGenerateColumns="False" Height="452" Width="701" 
+                  HorizontalAlignment="Center" Margin="12,3,-133,0" 
                   VerticalAlignment="Top" 
                   VerticalScrollBarVisibility="Auto" 
                   HorizontalScrollBarVisibility="Visible"
@@ -98,21 +98,21 @@
         </DataGrid>
 
         <Button Name="btnHandPicked" Content="Hand Picked Fights" Height="23" 
-                HorizontalAlignment="Left" Margin="164,461,0,0" VerticalAlignment="Top" 
+                HorizontalAlignment="Left" Margin="10,467,0,0" VerticalAlignment="Top" 
                 Width="114" Click="btnHandPicked_Click" Grid.Row="1" />
 
         <Button Name="btnFightSequence" Content="Generate Fight Sequence" 
-                Height="23" HorizontalAlignment="Left" Margin="283,461,0,0" 
+                Height="23" HorizontalAlignment="Left" Margin="129,467,0,0" 
                 VerticalAlignment="Top" Width="151" Click="btnFightSequence_Click" Grid.Row="1" />
 
         <Button Name="btnPrintSequence" Content="Print Fight Matches" Height="23" HorizontalAlignment="Left" 
-                Margin="439,461,0,0" VerticalAlignment="Top" Width="129" Click="btnPrintSequence_Click" Grid.Row="1" />
+                Margin="285,467,0,0" VerticalAlignment="Top" Width="129" Click="btnPrintSequence_Click" Grid.Row="1" />
 
-        <Label Content="Un-Matched Entries" Height="28" HorizontalAlignment="Left" Margin="10,497,0,0" Name="label1" VerticalAlignment="Top" Width="178" FontWeight="Bold" Foreground="Red" Grid.Row="1" />
+        <Label Content="Un-Matched Entries" Height="28" HorizontalAlignment="Left" Margin="12,497,0,0" Name="label1" VerticalAlignment="Top" Width="178" FontWeight="Bold" Foreground="Red" Grid.Row="1" />
 
         <!-- Unmatched entries -->
         <DataGrid Name="dgUnMatched" AutoGenerateColumns="False" Height="133" HorizontalAlignment="Left" 
-                  Margin="12,530,0,0" VerticalAlignment="Top" Width="556" Grid.Row="1">
+                  Margin="10,525,-133,0" VerticalAlignment="Top" Width="703" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Entry #" 
                                     Width="68"
@@ -121,7 +121,7 @@
                 </DataGridTextColumn>
 
                 <DataGridTextColumn Header="Entry Name" 
-                                    Width="220"
+                                    Width="368"
                                     IsReadOnly="True"
                                     Binding="{Binding EntryName}">
                 </DataGridTextColumn>

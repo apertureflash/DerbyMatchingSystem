@@ -149,7 +149,7 @@
     <Compile Include="Windows\ReportViewer.xaml.cs">
       <DependentUpon>ReportViewer.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Derby Matching.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,8 +170,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\DataProviders.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Derby Matching.xaml.cs">
+      <DependentUpon>Derby Matching.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DerbyEntries.xaml.cs">
       <DependentUpon>DerbyEntries.xaml</DependentUpon>
