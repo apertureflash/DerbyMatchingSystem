@@ -60,12 +60,12 @@
                   KeyUp="dgHandPicked_KeyUp" CanUserDeleteRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Entry #" 
-                                    Width="54"
+                                    Width="70"
                                     IsReadOnly="True"
                                     Binding="{Binding Rooster1EntryNumber}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Entry Name" 
-                                    Width="150"
+                                    Width="195"
                                     IsReadOnly="True"
                                     Binding="{Binding Rooster1Entry}">
                 </DataGridTextColumn>
@@ -80,16 +80,16 @@
                                     Binding="{Binding Rooster1Weight, StringFormat=\{0:F0\}}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="VS" 
-                                    Width="30"
+                                    Width="36"
                                     IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Entry #" 
-                                    Width="54"
+                                    Width="70"
                                     IsReadOnly="True"
                                     Binding="{Binding Rooster2EntryNumber}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Entry Name" 
-                                    Width="150"
+                                    Width="195"
                                     IsReadOnly="True"
                                     Binding="{Binding Rooster2Entry}">
                 </DataGridTextColumn>
@@ -111,7 +111,7 @@
                   Margin="12,268,0,0" VerticalAlignment="Top" Width="380"
                   SelectionChanged="dgDerbyEntries1_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding EntryNumber}" Header="Entry #" IsReadOnly="True" Width="55" />
+                <DataGridTextColumn Binding="{Binding EntryNumber}" Header="Entry #" IsReadOnly="True" Width="75" />
                 <DataGridTextColumn Binding="{Binding EntryName}" Header="Entry Name" IsReadOnly="True" Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
@@ -130,7 +130,7 @@
                   Margin="398,268,0,0" VerticalAlignment="Top" Width="380"
                   SelectionChanged="dgDerbyEntries2_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding EntryNumber}" Header="Entry #" IsReadOnly="True" Width="55" />
+                <DataGridTextColumn Binding="{Binding EntryNumber}" Header="Entry #" IsReadOnly="True" Width="75" />
                 <DataGridTextColumn Binding="{Binding EntryName}" Header="Entry Name" IsReadOnly="True" Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
